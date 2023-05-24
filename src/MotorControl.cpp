@@ -68,7 +68,7 @@ void MotorControl::backward()
 void MotorControl::brake()
 {
     bitClear(register_output, motorA);
-    bitSet(register_output, motorB);
+    bitClear(register_output, motorB);
     update_register();
 }
 
