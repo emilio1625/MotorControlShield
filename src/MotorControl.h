@@ -17,18 +17,36 @@ enum MOTOR_PIN {
 
 // Arduino PWM pins for motor speed control
 enum MOTOR_PWM_PIN {
+#ifdef __AVR__
     MOTOR1_PWM = 11,
     MOTOR2_PWM = 3,
     MOTOR3_PWM = 6,
     MOTOR4_PWM = 5,
+#elif defined(ESP32)
+    MOTOR1_PWM = 23,
+    MOTOR2_PWM = 25,
+    MOTOR3_PWM = 27,
+    MOTOR4_PWM = 16,
+#else
+// not defined!
+#endif
 };
 
 // Arduino pins to shift register control lines
 enum SHIFTREG_CONTROL_PIN {
+#ifdef __AVR__
     MC_LATCH  = 12,
     MC_CLK    = 4,
     MC_ENABLE = 7,
     MC_DATA   = 8,
+#elif defined(ESP32)
+    MC_LATCH = 19,
+    MC_CLK = 17,
+    MC_ENABLE = 14,
+    MC_DATA = 12,
+#else
+// not defined!
+#endif
 };
 
 class MotorControl
